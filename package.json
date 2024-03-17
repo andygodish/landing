@@ -1,0 +1,16 @@
+{
+  "name": "landing",
+  "version": "v0.0.2",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
