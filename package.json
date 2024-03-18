@@ -7,7 +7,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "jest --watch",
+    "test": "jest",
     "coverage": "jest --coverage"
   },
   "devDependencies": {

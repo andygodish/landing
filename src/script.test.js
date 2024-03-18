@@ -25,7 +25,7 @@ test('updates the year in the DOM', () => {
 test('fetches and displays project version', async () => {
   await fetchVersion();
   expect(document.getElementById('app-version').textContent).toBe('1.0.0');
-  expect(fetch).toHaveBeenCalledWith('../package.json');
+  expect(fetch).toHaveBeenCalledWith('./package.json');
 });
 
 test('handles fetch error for version', async () => {
