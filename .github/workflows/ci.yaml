@@ -52,5 +52,7 @@ jobs:
 
     - name: Semantic release
       uses: go-semantic-release/action@v1
+      with:
+        update-file: package.json
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
