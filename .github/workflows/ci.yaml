@@ -40,12 +40,12 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Nodejs
-		  uses: actions/setup-node@v4
+      uses: actions/setup-node@v4
       with:
-			  node-version: '20.11'
+        node-version: '20.11'
 
-		- name: npm install
-		  run: npm install -y
+    - name: npm install
+      run: npm install -y
 
     - name: Unit Tests
       run: npm test
