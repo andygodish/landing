@@ -43,6 +43,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20.11'
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install npm packages
       run: npm install -y
@@ -53,5 +54,5 @@ jobs:
     - name: Semantic release
       uses: go-semantic-release/action@v1
       with:
-        update-file: package.json
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        update-file: package.json
