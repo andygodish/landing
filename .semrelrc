@@ -1,7 +1,0 @@
-{
-  "plugins": {
-    "files-updater-npm": {
-      "names": ["package.json"]
-    }
-  }
-}
