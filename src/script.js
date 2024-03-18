@@ -6,7 +6,7 @@ function updateYear() {
 
 async function fetchVersion() {
   try {
-    const response = await fetch('../package.json');
+    const response = await fetch('./package.json');
     const data = await response.json();
     document.getElementById('app-version').textContent = `${data.version}`;
   } catch (error) {
