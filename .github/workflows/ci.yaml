@@ -51,7 +51,7 @@ jobs:
       run: npm test
 
     - name: Semantic release
-      uses: go-semantic-release/action@v2
+      uses: go-semantic-release/action@v1
       with:
         update-file: package.json
         github-token: ${{ secrets.GITHUB_TOKEN }}
