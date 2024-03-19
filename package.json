@@ -1,16 +1,16 @@
 {
-  "name": "landing",
-  "version": "v0.1.0",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
   "author": "",
+  "description": "",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "keywords": [],
   "license": "ISC",
+  "main": "index.js",
+  "name": "landing",
   "scripts": {
     "test": "jest",
     "coverage": "jest --coverage"
   },
-  "devDependencies": {
-    "jest": "^23.6.0"
-  }
+  "version": "1.0.0"
 }
