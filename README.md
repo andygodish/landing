@@ -18,3 +18,6 @@ The `ad-m/github-push-action@master` action is responsible for pushing the autom
 
 If the CI workflow is completed successfully, a build workflow is triggered that builds a new container image using the newly created semantic version as its tag. 
 
+## CD
+
+The production target is an Azure hosted web app deployed on the cheap and configured to host a docker container. 
