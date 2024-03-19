@@ -58,6 +58,7 @@ jobs:
       uses: go-semantic-release/action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        force-bump-patch-version: true
         update-file: "./package.json"
 
     - name: Commit files

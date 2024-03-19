@@ -8,7 +8,7 @@ async function fetchVersion() {
   try {
     const response = await fetch('./package.json');
     const data = await response.json();
-    document.getElementById('app-version').textContent = `${data.version}`;
+    document.getElementById('app-version').textContent = `v${data.version}`;
   } catch (error) {
     console.error('Failed to load version information', error);
   }
