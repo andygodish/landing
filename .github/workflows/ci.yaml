@@ -56,3 +56,6 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         update-file: "./package.json"
+
+    - name: test
+      run: cat package.json
