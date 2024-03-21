@@ -63,11 +63,18 @@ jobs:
         force-bump-patch-version: true
         update-file: "./package.json"
 
+    - name: Update deploy.yaml workflow with new version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        VERSION=$(node -p "require('./package.json').version"
+        sed -i '/options:/a \          - '"'$VERSION'"'' .github/workflows/deploy.yml
+
     - name: Commit files
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -a -m "Bumped version in package.json"
+        git commit -a -m "Bumped version in package.json, added VERSION to input list in deploy workflow"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
