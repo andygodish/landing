@@ -15,18 +15,16 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.inputs.version }}
+    - name: Check Azure CLI version
+      run: az --version
 
     - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Set up Docker container
-      run: |
-        # Your deployment commands to Azure using the selected version
-        # This might include pulling the Docker image tagged with the selected version
-        # and deploying it to the Azure Web App
+    # - name: Set up Docker container
+    #   run: |
+    #     # Your deployment commands to Azure using the selected version
+    #     # This might include pulling the Docker image tagged with the selected version
+    #     # and deploying it to the Azure Web App
