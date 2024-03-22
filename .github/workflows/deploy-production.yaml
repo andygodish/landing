@@ -28,4 +28,8 @@ jobs:
       with:
         azcliversion: latest
         inlineScript: |
-          az account show
+          az webapp config container set \
+            --name as-agio-land-prod-wus \
+            --resource-group rg-agio-land-prod-wus \
+            --docker-custom-image-name andygodish/landing:${{ github.event.inputs.version }}
+
