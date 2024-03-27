@@ -69,7 +69,7 @@ jobs:
       - name: Update deploy-production.yaml workflow with new version and Save Version
         id: set_version
         run: |
-          VERSION=$(node -p "require('./package.json').version")
+          VERSION=v$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_ENV
           echo "::set-output name=version::$VERSION"
           sed -i '/options:/a \          - '"'$VERSION'"'' .github/workflows/deploy-production.yaml
@@ -101,7 +101,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          VERSION=v${{ needs.test-semver.outputs.version }}
+          VERSION=${{ needs.test-semver.outputs.version }}
           docker build -t ${{ env.image }}:$VERSION .
           docker tag ${{ env.image }}:$VERSION ${{ env.image }}:latest
           docker push ${{ env.image }}:$VERSION
