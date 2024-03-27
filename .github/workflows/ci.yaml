@@ -36,10 +36,8 @@ env:
   image: andygodish/landing
 
 jobs:
-  test-semver:
+  test:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.set_version.outputs.version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -59,12 +57,15 @@ jobs:
         run: npm test
   
   version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.set_version.outputs.version }}
     steps:
       - name: Checkout repository
-          uses: actions/checkout@v4
-          with:
-            persist-credentials: false
-            fetch-depth: 0
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
 
       - name: Install Nodejs
         uses: actions/setup-node@v4
@@ -73,11 +74,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Semantic release
-          uses: go-semantic-release/action@v1
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            force-bump-patch-version: true
-            update-file: "./package.json"
+        uses: go-semantic-release/action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          force-bump-patch-version: true
+          update-file: "./package.json"
 
       - name: Update deploy-production.yaml workflow with new version and Save Version
         id: set_version
