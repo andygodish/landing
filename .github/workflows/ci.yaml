@@ -29,7 +29,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   test-semver:
@@ -62,7 +61,7 @@ jobs:
           force-bump-patch-version: true
           update-file: "./package.json"
 
-      - name: Update deploy.yaml workflow with new version and Save Version
+      - name: Update deploy-production.yaml workflow with new version and Save Version
         id: set_version
         run: |
           VERSION=$(node -p "require('./package.json').version")
@@ -79,7 +78,7 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           branch: ${{ github.ref }}
 
   build:
