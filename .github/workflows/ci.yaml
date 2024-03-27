@@ -83,7 +83,7 @@ jobs:
           branch: ${{ github.ref }}
 
   build:
-    needs: CI
+    needs: test-semver
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -97,7 +97,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          VERSION=${{ needs.CI.outputs.version }}
+          VERSION=${{ needs.test-semver.outputs.version }}
           docker build -t ${{ env.image }}:$VERSION .
           docker tag ${{ env.image }}:$VERSION ${{ env.image }}:latest
           docker push ${{ env.image }}:$VERSION
