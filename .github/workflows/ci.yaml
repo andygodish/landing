@@ -44,7 +44,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
           fetch-depth: 0
 
       - name: Install Nodejs
@@ -58,13 +57,27 @@ jobs:
 
       - name: Execute Unit Tests
         run: npm test
+  
+  version:
+    steps:
+      - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            persist-credentials: false
+            fetch-depth: 0
+
+      - name: Install Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Semantic release
-        uses: go-semantic-release/action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          force-bump-patch-version: true
-          update-file: "./package.json"
+          uses: go-semantic-release/action@v1
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            force-bump-patch-version: true
+            update-file: "./package.json"
 
       - name: Update deploy-production.yaml workflow with new version and Save Version
         id: set_version
@@ -87,11 +100,11 @@ jobs:
           branch: ${{ github.ref }}
 
   build:
-    needs: test-semver
+    needs: version
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Login to Docker
         uses: docker/login-action@v3
@@ -101,7 +114,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          VERSION=${{ needs.test-semver.outputs.version }}
+          VERSION=${{ needs.version.outputs.version }}
           docker build -t ${{ env.image }}:$VERSION .
           docker tag ${{ env.image }}:$VERSION ${{ env.image }}:latest
           docker push ${{ env.image }}:$VERSION
