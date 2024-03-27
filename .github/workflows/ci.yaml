@@ -14,7 +14,7 @@ on:
       - "docs/**"
       - "CODEOWNERS"
       - ".github/**"
-      - "package.json"
+      - "**.json"
   pull_request:
     branches: ["main"]
     paths-ignore:
@@ -27,7 +27,7 @@ on:
       - "docs/**"
       - "CODEOWNERS"
       - ".github/**"
-      - "package.json"
+      - "**.json"
 
 permissions:
   contents: write
@@ -101,7 +101,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          VERSION=${{ needs.test-semver.outputs.version }}
+          VERSION=v${{ needs.test-semver.outputs.version }}
           docker build -t ${{ env.image }}:$VERSION .
           docker tag ${{ env.image }}:$VERSION ${{ env.image }}:latest
           docker push ${{ env.image }}:$VERSION
