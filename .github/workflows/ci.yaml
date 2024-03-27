@@ -68,7 +68,7 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_ENV
           echo "::set-output name=version::$VERSION"
-          sed -i '/options:/a \          - '"'$VERSION'"'' .github/workflows/deploy.yml
+          sed -i '/options:/a \          - '"'$VERSION'"'' .github/workflows/deploy-production.yml
 
       - name: Commit files
         run: |
