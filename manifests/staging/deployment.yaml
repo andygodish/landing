@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: landing
+  name: landing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: landing
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: landing
+    spec:
+      containers:
+      - image: andygodish/landing:v1.0.1
+        name: landing
+        resources: {}
+        ports: 
+status: {}
