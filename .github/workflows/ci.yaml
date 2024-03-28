@@ -15,6 +15,7 @@ on:
       - "CODEOWNERS"
       - ".github/**"
       - "**.json"
+      - "manifests/**"
   pull_request:
     branches: ["main"]
     paths-ignore:
@@ -28,6 +29,7 @@ on:
       - "CODEOWNERS"
       - ".github/**"
       - "**.json"
+      - "manifests/**"
 
 permissions:
   contents: write
