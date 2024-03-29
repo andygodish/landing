@@ -5,6 +5,7 @@ metadata:
   labels:
     app: landing
   name: landing
+  namespace: landing
 spec:
   replicas: 1
   selector:
