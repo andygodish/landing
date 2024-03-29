@@ -22,4 +22,5 @@ spec:
         name: landing
         resources: {}
         ports: 
+        - containerPort: 8080
 status: {}
