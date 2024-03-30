@@ -125,3 +125,27 @@ jobs:
           docker tag ${{ env.image }}:$VERSION ${{ env.image }}:latest
           docker push ${{ env.image }}:$VERSION
           docker push ${{ env.image }}:latest
+
+  deploy-staging:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update deployment image tag
+        run: sh ./scripts/update-tag.sh ${{ needs.version.outputs.version }}
+
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Bumped version image tag in manifests/staging/deployment.yaml"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
