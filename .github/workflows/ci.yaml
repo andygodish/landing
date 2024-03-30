@@ -16,6 +16,7 @@ on:
       - ".github/**"
       - "**.json"
       - "manifests/**"
+      - "scripts/**"
   pull_request:
     branches: ["main"]
     paths-ignore:
@@ -30,6 +31,7 @@ on:
       - ".github/**"
       - "**.json"
       - "manifests/**"
+      - "scripts/**"
 
 permissions:
   contents: write
