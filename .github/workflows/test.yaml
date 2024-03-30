@@ -1,0 +1,37 @@
+name: Test Tag Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to deploy'
+        required: true
+        type: choice
+        options:
+          - 'v1.0.1'
+          - 'v1.0.0' 
+permissions:
+  contents: write
+jobs: 
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Update deployment image tag
+        run: ./scripts/update-tag.sh ${{ github.event.inputs.version }}
+
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "Bumped version image tag in deployment.yaml for staging environment"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
