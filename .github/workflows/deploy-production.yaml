@@ -11,7 +11,7 @@ on:
           - 'v1.0.1'
           - 'v1.0.0' 
 jobs:
-  deploy:
+  deploy-production:
     runs-on: ubuntu-latest
     steps:
     - name: Check Azure CLI version
