@@ -20,3 +20,4 @@ http-server ./src
 
 The package.json file is read in by the application to read the project version. The production build takes uses the package.json from the root directory. The src directory contains a dummy version of this file for testing and development that mimics the process built into the docker image. 
 
+testing
