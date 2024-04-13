@@ -140,8 +140,8 @@ jobs:
 
       - name: Configure git
         run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "agodish18@gmail.com"
+          git config --local user.name "Andy Godish"
           git pull --rebase origin ${{ github.head_ref }}
 
       - name: Update deployment image tag
@@ -154,5 +154,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           branch: ${{ github.ref }}
