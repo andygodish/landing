@@ -73,9 +73,6 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
-      - name: Log Git Reference
-        run: echo "Ref: ${{ github.ref }}, Head Ref: ${{ github.head_ref }}, Base Ref: ${{ github.base_ref }}"
-
       - name: Install Nodejs
         uses: actions/setup-node@v4
         with:
@@ -140,9 +137,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Log Git Reference
-        run: echo "Ref: ${{ github.ref }}, Head Ref: ${{ github.head_ref }}, Base Ref: ${{ github.base_ref }}"
 
       - name: Configure git
         run: |
