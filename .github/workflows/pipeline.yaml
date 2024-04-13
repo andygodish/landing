@@ -114,6 +114,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Pull in changes from version job
+        run: |
+          git pull -r
+
       - name: Login to Docker
         uses: docker/login-action@v3
         with:
