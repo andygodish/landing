@@ -23,7 +23,7 @@ COPY nginx.conf /etc/nginx/conf.d
 
 USER nginx
 
-WORKDIR /app
+WORKDIR /usr/share/nginx/html/
 
 EXPOSE 8080
 
