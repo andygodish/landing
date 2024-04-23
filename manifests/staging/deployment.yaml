@@ -19,9 +19,10 @@ spec:
         app: landing
     spec:
       containers:
-      - image: andygodish/landing:v1.0.4
+      - image: andygodish/landing:v1.0.2
         name: landing
         resources: {}
+        imagePullPolicy: Always
         ports: 
         - containerPort: 8080
 status: {}
