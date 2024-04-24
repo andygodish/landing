@@ -19,7 +19,7 @@ spec:
         app: landing
     spec:
       containers:
-      - image: andygodish/landing:v1.0.3
+      - image: andygodish/landing:v1.0.4
         name: landing
         resources: {}
         imagePullPolicy: Always
