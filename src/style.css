@@ -38,6 +38,15 @@ header img {
   height: auto; /* to maintain the aspect ratio */
 }
 
+.btc {
+  display: flex;
+  align-items: center ;
+}
+
+.btc img {
+  margin-right: 8px;
+}
+
 main {
   flex: 1;
   display: flex;
