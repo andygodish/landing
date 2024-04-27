@@ -14,8 +14,25 @@ async function fetchVersion() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', updateYear);
-document.addEventListener('DOMContentLoaded', fetchVersion);
+async function fetchBitcoinPrice() {
+  try {
+    const response = await fetch('https://api.coinbase.com/v2/prices/BTC-USD/sell');
+    const data = await response.json();
+    // Updated to round to the nearest dollar
+    const price = `${parseFloat(data.data.amount).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+    document.getElementById('bitcoin-price').textContent = price;
+  } catch (error) {
+    console.error('Failed to fetch Bitcoin price', error);
+  }
+}
+
+function initialize() {
+  updateYear();
+  fetchVersion();
+  fetchBitcoinPrice(); // Add this line to fetch the price when the page loads
+}
+
+document.addEventListener('DOMContentLoaded', initialize);
 
 // Export the functions for testing
-module.exports = { updateYear, fetchVersion };
+module.exports = { updateYear, fetchVersion, fetchBitcoinPrice };
