@@ -14,6 +14,6 @@ spec:
     nodePort: 31042
   selector:
     app: landing
-  type: NodePort
+  type: LoadBalancer
 status:
   loadBalancer: {}
